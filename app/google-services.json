@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "587940669329",
+    "project_id": "fightnet-508c4",
+    "storage_bucket": "fightnet-508c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587940669329:android:f4d5306b1a07cdc26a9c30",
+        "android_client_info": {
+          "package_name": "com.jaorcas.fightnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587940669329-nra9h5lpumk2in6mb17mv5ets19tk0gt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAv_NPC3JjnkfQMmyQ6qp30ffh52LVF74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587940669329-nra9h5lpumk2in6mb17mv5ets19tk0gt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

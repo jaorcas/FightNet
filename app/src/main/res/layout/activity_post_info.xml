@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".PostInfoActivity"
+    android:background="@color/purple_dark">
+
+    <include
+        layout="@layout/action_bar_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="55dp">
+
+
+            <!-- ESTO SERÍA SI NECESITAMOS UN SLIDER -->
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="false"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="false"
+                android:overScrollMode="never"/>
+
+            <TextView
+                android:id="@+id/textRelativeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="left"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"
+                android:text="Hace 0 minutos"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp">
+
+                <!-- LOGO USUARIO -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageUserProfile"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_person_gray"
+                    android:layout_margin="3dp"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="2dp">
+
+                    <TextView
+                        android:id="@+id/textViewUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="USERNAME"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/textViewEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="email@gmail.com"
+                        android:textColor="@color/white"/>
+
+
+                </LinearLayout>
+
+                <!-- ESTE VIEW VACIO ES PARA PONER HACER GRAVITY RIGHT
+                ESTÁ INTENTANDO OCUPAR T0DO EL ESPACIO, LO QUE HACE QUE EL BOTON VAYA HACIA LA DERECHA
+                ES RARO, PERO FUNCIONA-->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imageViewLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/corazon_gris"/>
+
+                    <TextView
+                        android:id="@+id/textViewLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 Me gusta"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!-- DESCRIPCION POST -->
+            <TextView
+                android:id="@+id/textViewPostDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion del post"
+                android:textSize="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="15dp"
+                android:textColor="@color/white"/>
+
+            <!-- FRANJA DIVISORIA -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp"/>
+
+
+            <!-- JUEGO
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JUEGO:"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"/>-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/pink"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="4dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewGameIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/pc"/>
+
+                    <TextView
+                        android:id="@+id/textViewGameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STREET FIGHTER 6"
+                        android:layout_marginLeft="6dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputCommentary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Escribe un comentario..."
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="18dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonCommentary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESPONDER"
+                android:backgroundTint="@color/pink"
+                android:layout_gravity="right"
+                android:enabled="false"
+                android:layout_marginRight="15dp"/>
+
+            <!-- FRANJA DIVISORIA -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COMENTARIOS"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:textColor="@color/white"
+                android:textSize="18dp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewComments"
+                android:layout_width="match_parent"
+                android:overScrollMode="never"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.
+                     AppbarLayout$ScrollingViewBehavior"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/pink"
+                android:textSize="30dp"
+                android:layout_marginBottom="70dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

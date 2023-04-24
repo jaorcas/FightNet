@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".EditProfileActivity"
+    android:background="@color/purple">
+
+
+        <ImageView
+            android:id="@+id/imageViewBanner"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_profile_background"
+            android:transitionName="@string/transitionname_picture"
+            app:layout_collapseMode="parallax" />
+
+        <!-- IMAGEN USUARIO -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="120dp"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:src="@drawable/ic_media_alter"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="3dp"
+            app:civ_circle_background_color="@color/purple_dark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="250dp">
+
+            <!-- Usuario -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputUsername"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:drawableStart="@drawable/custom_user_icon"
+                android:drawablePadding="12dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:textColor="@color/black"
+                android:hint="Nombre usuario"
+                android:textColorHint="@color/gray"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <!-- Usuario -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputUserDescription"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:drawableStart="@drawable/custom_description_icon"
+                android:drawablePadding="12dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:textColor="@color/black"
+                android:hint="Descripción"
+                android:textColorHint="@color/gray"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        </LinearLayout>
+
+    <!-- Botón -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_gravity="bottom"
+        android:height="55dp"
+        android:backgroundTint="@color/pink"
+        android:text="ACTUALIZAR"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <!-- Botón volver atrás-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icon_arrowleft"
+        app:civ_circle_background_color="@color/white"
+        android:layout_margin="15dp"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
