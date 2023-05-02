@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="55dp">
+            android:layout_marginTop="?attr/actionBarSize">
 
 
             <!-- ESTO SERÍA SI NECESITAMOS UN SLIDER -->
@@ -41,7 +41,24 @@
                 app:sliderIndicatorUnselectedColor="#FFF"
                 app:sliderScrollTimeInSec="1"
                 app:sliderStartAutoCycle="false"
-                android:overScrollMode="never"/>
+                android:overScrollMode="never"
+                android:visibility="visible"/>
+
+            <!-- VIDEO POST -->
+            <RelativeLayout
+                android:id="@+id/video_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/black"
+                android:visibility="gone">
+
+                <VideoView
+                    android:id="@+id/videoViewPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textRelativeTime"
@@ -142,60 +159,101 @@
             <!-- FRANJA DIVISORIA -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:background="@color/white"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="15dp"/>
 
 
-            <!-- JUEGO
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="JUEGO:"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/white"/>-->
+                android:orientation="vertical"
+                android:layout_marginHorizontal="5dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/pink"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="4dp">
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/pink"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="10dp">
 
-                    <ImageView
-                        android:id="@+id/imageViewGameIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/pc"/>
-
-                    <TextView
-                        android:id="@+id/textViewGameTitle"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="STREET FIGHTER 6"
-                        android:layout_marginLeft="6dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="4dp">
+
+                        <ImageView
+                            android:id="@+id/imageViewGameIcon"
+                            android:layout_width="30dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/pc"/>
+
+                        <TextView
+                            android:id="@+id/textViewGameTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:text="DRAGON BALL FIGHTERZ"
+                            android:layout_marginLeft="6dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
 
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- CARDVIEW PERSONAJE -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewCharacter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/pink"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="4dp">
+
+                        <ImageView
+                            android:id="@+id/imageViewCharacterIcon"
+                            android:layout_width="30dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/character_empty"/>
+
+                        <TextView
+                            android:id="@+id/textViewCharacterName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHARACTER"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="12dp"
+                            android:autoSizeMaxTextSize="30dp"
+                            android:layout_marginLeft="6dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
 
 
             <com.google.android.material.textfield.TextInputEditText

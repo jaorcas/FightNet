@@ -61,54 +61,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
-                android:text="SELECCIONA EL JUEGO:"
-                android:textSize="23dp"
+                android:text="- SELECCIONA EL JUEGO -"
+                android:textSize="21dp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 />
 
-            <!-- PRIMER CAMPO
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputTitle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="30dp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:drawableStart="@drawable/custom_email_icon"
-                android:drawablePadding="12dp"
-                android:background="@drawable/custom_input"
-                android:ems="10"
-                android:hint="Juego"
-                android:textColorHint="@color/gray"
-                android:textColor="@color/black"
-                android:inputType="textEmailAddress"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-              -->
 
-            <!-- SEGUNDO CAMPO-->
+            <!-- SPINNER JUEGOS -->
             <Spinner
                 android:id="@+id/spinnerGames"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="12dp"
                 android:popupBackground="@color/purple_dark">
 
             </Spinner>
+
+            <!-- SPINNER PERSONAJES -->
+            <Spinner
+                android:id="@+id/spinnerCharacters"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="25dp"
+                android:popupBackground="@color/purple_dark">
+
+            </Spinner>
+
 
             <!-- Correo electronico -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputDescription"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="15dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"

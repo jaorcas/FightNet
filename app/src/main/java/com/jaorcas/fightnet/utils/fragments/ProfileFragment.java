@@ -1,11 +1,8 @@
 package com.jaorcas.fightnet.utils.fragments;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -17,22 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jaorcas.fightnet.EditProfileActivity;
 import com.jaorcas.fightnet.MainActivity;
 import com.jaorcas.fightnet.R;
-import com.jaorcas.fightnet.adapters.PostsAdapter;
 import com.jaorcas.fightnet.adapters.UserPostsAdapter;
 import com.jaorcas.fightnet.models.Post;
 import com.jaorcas.fightnet.providers.AuthProvider;
@@ -155,7 +147,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
     @Override
     public void onStart() {
         super.onStart();
-        Query query = postProvider.getPostByUser(authProvider.getUid());
+        Query query = postProvider.getPostsByUserOrderedByTimestamp(authProvider.getUid());
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class).build();
 
@@ -198,6 +190,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
 
     }
     private void logOut(){
+        userPostsAdapter.stopListening();
         authProvider.logOut();
         Intent intent = new Intent(getContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -246,7 +239,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
 
     //OBTENEMOS LA CANTIDAD DE ELEMENTOS QUE TIENE LA CONSULTA
     private void getPostNumber(){
-        postProvider.getPostByUser(authProvider.getUid()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        postProvider.getPostsByUser(authProvider.getUid()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 int numberPost = queryDocumentSnapshots.size();

@@ -22,7 +22,7 @@ import com.jaorcas.fightnet.providers.PostProvider;
 public class FiltersActivity extends AppCompatActivity {
 
     EnumGames extraGame;
-    String characterSelectedGame;
+    String characterSelected;
 
     GamesProvider gamesProvider;
     AuthProvider authProvider;
@@ -39,7 +39,7 @@ public class FiltersActivity extends AppCompatActivity {
 
         //OBTENEMOS LOS DATOS EXTRA DEL INTENT
         extraGame = (EnumGames) getIntent().getSerializableExtra("game");
-        characterSelectedGame = getIntent().getStringExtra("character");
+        characterSelected = getIntent().getStringExtra("character");
 
         //UI
         textviewNumberPosts = findViewById(R.id.textviewNumberPost);
@@ -71,12 +71,12 @@ public class FiltersActivity extends AppCompatActivity {
 
 
         //COMPROBAMOS SI HA ELEGIDO ALGÚN PERSONAJE O NO
-        if (characterSelectedGame.equals("-")) characterSelectedGame = null;
+        if (characterSelected.equals("-")) characterSelected = null;
 
-        if(characterSelectedGame == null){
+        if(characterSelected == null){
             Toast.makeText(this, "El juego seleccionado ha sido " + extraGame, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "El juego seleccionado ha sido " + extraGame +  "con el pj " + characterSelectedGame, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "El juego seleccionado ha sido " + extraGame +  "con el pj " + characterSelected, Toast.LENGTH_SHORT).show();
         }
 
 
@@ -85,8 +85,17 @@ public class FiltersActivity extends AppCompatActivity {
 
     @Override
     public void onStart() {
+
         super.onStart();
-        Query query = postProvider.getPostByCategoryAndTimestamp(gamesProvider.getGameNameByEnum(extraGame));
+        Query query = null;
+
+        //COMPROBAMOS ANTES DE FILTRAR SI HA AÑADIDO ALGÚN PERSONAJE
+        if (characterSelected != null)
+            query = postProvider.getPostByGameAndCharacter(gamesProvider.getGameNameByEnum(extraGame),characterSelected);
+         else
+            query = postProvider.getPostByGame(gamesProvider.getGameNameByEnum(extraGame));
+
+
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class).build();
 

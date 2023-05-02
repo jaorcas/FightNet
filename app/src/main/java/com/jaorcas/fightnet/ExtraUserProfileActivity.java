@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -89,9 +88,9 @@ public class ExtraUserProfileActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        Query query = postProvider.getPostByUser(extraUserID);
+        Query query = postProvider.getPostsByUserOrderedByTimestamp(extraUserID);
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
-                .setQuery(query, Post.class).build();
+                .setQuery(query.orderBy("timestamp", Query.Direction.DESCENDING), Post.class).build();
 
         userPostsAdapter = new UserPostsAdapter(options, ExtraUserProfileActivity.this);
         recyclerView.setAdapter(userPostsAdapter);
@@ -128,6 +127,7 @@ public class ExtraUserProfileActivity extends AppCompatActivity {
                         //SI LA URL ES VACÍA, NO LE ASIGNAMOS LA IMAGEN PARA EVITAR ERRORES
                         if(urlImageProfile!=null) Picasso.get().load(urlImageProfile).into(circleImageProfile);
                     }
+
                     if(documentSnapshot.contains("imageBanner")){
                         String urlImageBanner = documentSnapshot.getString("imageBanner");
                         if(urlImageBanner!=null) Picasso.get().load(urlImageBanner).into(imageviewBanner);
@@ -146,7 +146,7 @@ public class ExtraUserProfileActivity extends AppCompatActivity {
 
     //OBTENEMOS LA CANTIDAD DE ELEMENTOS QUE TIENE LA CONSULTA
     private void getPostNumber(){
-        postProvider.getPostByUser(extraUserID).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        postProvider.getPostsByUser(extraUserID).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 int numberPost = queryDocumentSnapshots.size();

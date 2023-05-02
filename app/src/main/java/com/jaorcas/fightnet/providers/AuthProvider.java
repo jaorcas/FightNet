@@ -58,7 +58,6 @@ public class AuthProvider {
         if(auth!=null){
             auth.signOut();
         }
-
     }
 
 

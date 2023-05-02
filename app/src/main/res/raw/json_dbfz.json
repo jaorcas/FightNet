@@ -1,219 +1,476 @@
 [
   {
-    "nombre" : "-",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FNone.png?alt=media&token=9c6b29e3-9311-4aaf-a1af-bc8537173b32",
+    "name" : "-",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FNone.png?alt=media&token=9c6b29e3-9311-4aaf-a1af-bc8537173b32",
     "5L": 6
 
   },
   {
-    "nombre" : "Androide 16",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F16.png?alt=media&token=9b4e640e-c2c7-45de-80d6-455fba06dce1",
+    "name" : "Androide 16",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F16.png?alt=media&token=9b4e640e-c2c7-45de-80d6-455fba06dce1",
     "5L": 6
 
   },
   {
-    "nombre" : "Androide 17",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F17.png?alt=media&token=39a92639-479b-4b9f-94cf-d8442e413992",
+    "name" : "Androide 17",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F17.png?alt=media&token=39a92639-479b-4b9f-94cf-d8442e413992",
+    "5L": 6
+
+  },
+  {
+    "name" : "Androide 18",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F18.png?alt=media&token=af4df60a-4a21-459f-87ac-079cdfd19b48",
     "5L": 6
   },
   {
-    "nombre" : "Androide 18",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F18.png?alt=media&token=af4df60a-4a21-459f-87ac-079cdfd19b48",
+    "name" : "Androide 21",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F21.png?alt=media&token=c6116b3b-6433-4a56-8a8f-554aa615fb91",
+    "image_fullbody": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fa21_fullbody.png?alt=media&token=63bbf40f-8303-4cba-a599-770031d4044e",
+    "5L": {
+      "startup": 6,
+      "block": -3
+    },
+    "5LL": {
+      "startup": 9,
+      "block": -4
+    },
+    "5LLL": {
+      "startup": 13,
+      "block": -5
+    },
+    "5M": {
+      "startup": 10,
+      "block": -6
+    },
+    "5H": {
+      "startup": 15,
+      "block": -5
+    },
+    "5S": {
+      "startup": 13,
+      "block": -4
+    },
+    "2L": {
+      "startup": 7,
+      "block": -2
+    },
+    "2M": {
+      "startup": 11,
+      "block": -10
+    },
+    "3M": {
+      "startup": 17,
+      "block": -10
+    },
+    "2H": {
+      "startup": 14,
+      "block": -19
+    },
+    "2S": {
+      "startup": 21,
+      "block": 4
+    },
+    "j5L": {
+      "startup": 6,
+      "block": "-"
+    },
+    "j5M": {
+      "startup": 10,
+      "block": "-"
+    },
+    "j5H": {
+      "startup": 14,
+      "block": "-"
+    },
+    "j5S": {
+      "startup": 18,
+      "block": "-"
+    },
+    "j2H": {
+      "startup": 13,
+      "block": "-"
+    },
+    "236L": {
+      "startup": 18,
+      "block": -10
+    },
+    "236M": {
+      "startup": 16,
+      "block": 2
+    },
+    "236H": {
+      "startup": 16,
+      "block": 1
+    },
+    "214L": {
+      "startup": 12,
+      "block": -5
+    },
+    "214M": {
+      "startup": 14,
+      "block": -5
+    },
+    "214H": {
+      "startup": 14,
+      "block": -5
+    },
+    "j214L": {
+      "startup": 13,
+      "block": -5
+    },
+    "j214M": {
+      "startup": 15,
+      "block": -5
+    },
+    "j214H": {
+      "startup": 13,
+      "block": -5
+    },
+    "236S": {
+      "startup": 24,
+      "block": "-"
+    },
+    "j236S": {
+      "startup": 13,
+      "block": "-"
+    },
+    "214S": {
+      "startup": 13,
+      "block": "-"
+    },
+    "j214S": {
+      "startup": 13,
+      "block": "-"
+    },
+    "Assist A": {
+      "startup": 25,
+      "block": 30
+    },
+    "Assist B": {
+      "startup": 20,
+      "block": 30
+    },
+    "Assist C": {
+      "startup": 35,
+      "block": 55
+    }
+  },
+  {
+    "name" : "Baby Vegeta",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBaby%20Vegeta.png?alt=media&token=fc1d48d1-68b2-41cf-84d9-ed82a13862d4",
     "5L": 6
   },
   {
-    "nombre" : "Androide 21",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2F21.png?alt=media&token=c6116b3b-6433-4a56-8a8f-554aa615fb91",
+    "name" : "Bardock",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBardock.png?alt=media&token=a267e2e3-5f5b-4c69-9064-3221aa83d935",
     "5L": 6
   },
   {
-    "nombre" : "Baby Vegeta",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBaby%20Vegeta.png?alt=media&token=fc1d48d1-68b2-41cf-84d9-ed82a13862d4",
+    "name" : "Bills",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBills.png?alt=media&token=e64d244e-bd33-4eb5-b57d-c42485e81c3f",
     "5L": 6
   },
   {
-    "nombre" : "Bardock",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBardock.png?alt=media&token=a267e2e3-5f5b-4c69-9064-3221aa83d935",
+    "name" : "Broly Super",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBroly%20Super.png?alt=media&token=8da91fa7-9e57-4194-ae9d-217dbea43b93",
     "5L": 6
   },
   {
-    "nombre" : "Bills",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBills.png?alt=media&token=e64d244e-bd33-4eb5-b57d-c42485e81c3f",
+    "name" : "Broly Z",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBroly%20Z.png?alt=media&token=74c45eec-a8e7-4b30-a711-1005610c6b67",
     "5L": 6
   },
   {
-    "nombre" : "Broly Super",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBroly%20Super.png?alt=media&token=8da91fa7-9e57-4194-ae9d-217dbea43b93",
+    "name" : "Buu Gordo",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBuu%20Gordo.png?alt=media&token=4184500d-375d-4295-a88f-3f54d3159983",
     "5L": 6
   },
   {
-    "nombre" : "Broly Z",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBroly%20Z.png?alt=media&token=74c45eec-a8e7-4b30-a711-1005610c6b67",
+    "name" : "Cell",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FCell.png?alt=media&token=c6cacd48-4731-42df-8dfa-cee1923bf660",
     "5L": 6
   },
   {
-    "nombre" : "Buu Gordo",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FBuu%20Gordo.png?alt=media&token=4184500d-375d-4295-a88f-3f54d3159983",
+    "name" : "Cooler",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FCooler.png?alt=media&token=23335fdc-d6c1-4e96-a8c9-89d76d0aca62",
     "5L": 6
   },
   {
-    "nombre" : "Cell",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FCell.png?alt=media&token=c6cacd48-4731-42df-8dfa-cee1923bf660",
+    "name" : "Freezer",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FFreezer.png?alt=media&token=4c4f3030-12bc-4323-9b7e-dc51461b66f4",
     "5L": 6
   },
   {
-    "nombre" : "Cooler",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FCooler.png?alt=media&token=23335fdc-d6c1-4e96-a8c9-89d76d0aca62",
+    "name" : "Ginyu",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGinyu.png?alt=media&token=cc37ae8d-5af8-451b-8c0e-70431cdda47f",
     "5L": 6
   },
   {
-    "nombre" : "Freezer",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FFreezer.png?alt=media&token=4c4f3030-12bc-4323-9b7e-dc51461b66f4",
+    "name" : "Gogeta Blue",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGogeta.png?alt=media&token=d4b622b5-b5a2-4e14-9889-31d9b0bfd529",
     "5L": 6
   },
   {
-    "nombre" : "Ginyu",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGinyu.png?alt=media&token=cc37ae8d-5af8-451b-8c0e-70431cdda47f",
+    "name" : "Gohan Adulto",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGohan%20Adulto.png?alt=media&token=6551eefc-cc39-49a0-9185-0641d5e1c5bd",
     "5L": 6
   },
   {
-    "nombre" : "Gogeta Blue",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGogeta.png?alt=media&token=d4b622b5-b5a2-4e14-9889-31d9b0bfd529",
+    "name" : "Gohan Joven",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJoven%20Gohan.png?alt=media&token=362d2fc7-9661-469a-9ddd-28bcab4f15a8",
     "5L": 6
   },
   {
-    "nombre" : "Gohan Adulto",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGohan%20Adulto.png?alt=media&token=6551eefc-cc39-49a0-9185-0641d5e1c5bd",
+    "name" : "Goku Base",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Base.png?alt=media&token=6f5b6e2b-b284-4a4e-94ed-655bd99e0385",
     "5L": 6
   },
   {
-    "nombre" : "Gohan Joven",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJoven%20Gohan.png?alt=media&token=362d2fc7-9661-469a-9ddd-28bcab4f15a8",
+    "name" : "Goku Black",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Black.png?alt=media&token=621fcd8d-b7c8-4542-bbf3-4bd8c00db6bb",
     "5L": 6
   },
   {
-    "nombre" : "Goku Base",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Base.png?alt=media&token=6f5b6e2b-b284-4a4e-94ed-655bd99e0385",
+    "name" : "Goku Blue",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Blue.png?alt=media&token=41525350-3945-47b9-8c94-3d252c53afda",
     "5L": 6
   },
   {
-    "nombre" : "Goku Black",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Black.png?alt=media&token=621fcd8d-b7c8-4542-bbf3-4bd8c00db6bb",
+    "name" : "Goku GT",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20GT.png?alt=media&token=eadebad3-5c0e-4abd-9b68-f0d1af7e056c",
     "5L": 6
   },
   {
-    "nombre" : "Goku Blue",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20Blue.png?alt=media&token=41525350-3945-47b9-8c94-3d252c53afda",
+    "name" : "Goku SSJ",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20SSJ.png?alt=media&token=7e938629-8f27-4e9b-99ea-3d7fc0e241a9",
+    "image_fullbody" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fgoku_ssj_fullbody.png?alt=media&token=b6aef4b6-3a37-40e8-9a2e-7a0207a3b436",
+    "5L": {
+      "startup": 6,
+      "block": -3
+    },
+    "5LL": {
+      "startup": 9,
+      "block": -4
+    },
+    "5LLL": {
+      "startup": 14,
+      "block": -5
+    },
+    "5M": {
+      "startup": 9,
+      "block": -7
+    },
+    "5H": {
+      "startup": 14,
+      "block": -8
+    },
+    "5S": {
+      "startup": 13,
+      "block": -4
+    },
+    "2S": {
+      "startup": 13,
+      "block": -1
+    },
+    "2L": {
+      "startup": 6,
+      "block": 0
+    },
+    "2M": {
+      "startup": 10,
+      "block": -17
+    },
+    "2H": {
+      "startup": 14,
+      "block": -17
+    },
+    "j5L": {
+      "startup": 6,
+      "block": "-"
+    },
+    "j5M": {
+      "startup": 10,
+      "block": "-"
+    },
+    "j5H": {
+      "startup": 13,
+      "block": "-"
+    },
+    "j5S": {
+      "startup": 12,
+      "block": "-"
+    },
+    "j2H": {
+      "startup": 11,
+      "block": "-"
+    },
+    "236L": {
+      "startup": 24,
+      "block": -5
+    },
+    "236M": {
+      "startup": 28,
+      "block": 2
+    },
+    "236H": {
+      "startup": "24~32",
+      "block": -5
+    },
+    "214L": {
+      "startup": 10,
+      "block": -2
+    },
+    "214M": {
+      "startup": 13,
+      "block": -39
+    },
+    "214H": {
+      "startup": 11,
+      "block": -44
+    },
+    "j236L": {
+      "startup": 20,
+      "block": "-"
+    },
+    "j236M": {
+      "startup": 22,
+      "block": "-"
+    },
+    "j236H": {
+      "startup": 13,
+      "block": -4
+    },
+    "j214L": {
+      "startup": 7,
+      "block": "-"
+    },
+    "j214M": {
+      "startup": 9,
+      "block": "-"
+    },
+    "j214H": {
+      "startup": 7,
+      "block": "-"
+    },
+    "236S": {
+      "startup": 18,
+      "block": -16
+    },
+    "j236S": {
+      "startup": 18,
+      "block": "-"
+    },
+    "Assist A": {
+      "startup": 34,
+      "block": 30
+    },
+    "Assist B": {
+      "startup": 20,
+      "block": 40
+    },
+    "Assist C": {
+      "startup": 35,
+      "block": 55
+    }
+  },
+  {
+    "name" : "Goku UI",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20UI.png?alt=media&token=dbe269a6-2971-4a69-9003-00c1846aca3d",
     "5L": 6
   },
   {
-    "nombre" : "Goku GT",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20GT.png?alt=media&token=eadebad3-5c0e-4abd-9b68-f0d1af7e056c",
+    "name" : "Gotenks",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGotenks.png?alt=media&token=96bd1742-bafd-4b7a-adef-2341e519763f",
     "5L": 6
   },
   {
-    "nombre" : "Goku SSJ",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20SSJ.png?alt=media&token=7e938629-8f27-4e9b-99ea-3d7fc0e241a9",
+    "name" : "Hit",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FHit.png?alt=media&token=c42648e1-1eaa-4ae0-9ad2-ea30cd7945c3",
     "5L": 6
   },
   {
-    "nombre" : "Goku UI",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGoku%20UI.png?alt=media&token=dbe269a6-2971-4a69-9003-00c1846aca3d",
+    "name" : "Janemba",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJanemba.png?alt=media&token=a6c697b7-5790-4c96-bf72-7ab3a267bfa3",
     "5L": 6
   },
   {
-    "nombre" : "Gotenks",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FGotenks.png?alt=media&token=96bd1742-bafd-4b7a-adef-2341e519763f",
+    "name" : "Jiren",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJiren.png?alt=media&token=d9d7dcec-1a2f-482a-8b2a-5c7c65e143cd",
     "5L": 6
   },
   {
-    "nombre" : "Hit",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FHit.png?alt=media&token=c42648e1-1eaa-4ae0-9ad2-ea30cd7945c3",
+    "name" : "Kefla",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKefla.png?alt=media&token=13d586b9-599c-4966-929c-4d40dfdb3697",
     "5L": 6
   },
   {
-    "nombre" : "Janemba",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJanemba.png?alt=media&token=a6c697b7-5790-4c96-bf72-7ab3a267bfa3",
+    "name" : "Kid Buu",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKid%20Buu.png?alt=media&token=8b042275-966a-461a-811e-53c5c33c568f",
     "5L": 6
   },
   {
-    "nombre" : "Jiren",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FJiren.png?alt=media&token=d9d7dcec-1a2f-482a-8b2a-5c7c65e143cd",
+    "name" : "Krillin",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKrillin.png?alt=media&token=d5199b3d-ab3e-4ffd-8b97-d877ded2b6b3",
     "5L": 6
   },
   {
-    "nombre" : "Kefla",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKefla.png?alt=media&token=13d586b9-599c-4966-929c-4d40dfdb3697",
+    "name" : "Nappa",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FNappa.png?alt=media&token=f3864131-9f18-4ec5-9775-70076e897fad",
     "5L": 6
   },
   {
-    "nombre" : "Kid Buu",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKid%20Buu.png?alt=media&token=8b042275-966a-461a-811e-53c5c33c568f",
+    "name" : "Piccolo",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FPiccolo.png?alt=media&token=e0c74cde-9f26-4466-9de0-f409a70fb539",
     "5L": 6
   },
   {
-    "nombre" : "Krillin",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FKrillin.png?alt=media&token=d5199b3d-ab3e-4ffd-8b97-d877ded2b6b3",
+    "name" : "Roshi",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FRoshi.png?alt=media&token=6e5416ec-961c-4391-872c-168d5b1ba795",
     "5L": 6
   },
   {
-    "nombre" : "Nappa",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FNappa.png?alt=media&token=f3864131-9f18-4ec5-9775-70076e897fad",
+    "name" : "Tien",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FTien.png?alt=media&token=6fdb94f8-0795-4ecb-8f0e-7ed162e73096",
     "5L": 6
   },
   {
-    "nombre" : "Piccolo",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FPiccolo.png?alt=media&token=e0c74cde-9f26-4466-9de0-f409a70fb539",
+    "name" : "Trunks",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FTrunks.png?alt=media&token=df4f5d1e-361b-48cb-b12b-98d77edd850b",
     "5L": 6
   },
   {
-    "nombre" : "Roshi",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FRoshi.png?alt=media&token=6e5416ec-961c-4391-872c-168d5b1ba795",
+    "name" : "Vegeta Base",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVegeta%20Base.png?alt=media&token=02623612-4ba1-4b87-a90e-5ac4a7e827cb",
     "5L": 6
   },
   {
-    "nombre" : "Tien",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FTien.png?alt=media&token=6fdb94f8-0795-4ecb-8f0e-7ed162e73096",
+    "name" : "Vegeta Blue",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fvegeta%20blue.png?alt=media&token=e0bcd4d7-4cb1-4847-99b0-1f4332952f93",
     "5L": 6
   },
   {
-    "nombre" : "Trunks",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FTrunks.png?alt=media&token=df4f5d1e-361b-48cb-b12b-98d77edd850b",
+    "name" : "Vegeta SSJ",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVegeta%20SSJ.png?alt=media&token=df23de82-2faf-4db7-a80e-9bef2e1d4e6b",
     "5L": 6
   },
   {
-    "nombre" : "Vegeta Base",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVegeta%20Base.png?alt=media&token=02623612-4ba1-4b87-a90e-5ac4a7e827cb",
+    "name" : "Vegetto",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fvegetto.png?alt=media&token=778b8980-65d8-40ca-b7a9-cad4e49fdb45",
     "5L": 6
   },
   {
-    "nombre" : "Vegeta Blue",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fvegeta%20blue.png?alt=media&token=e0bcd4d7-4cb1-4847-99b0-1f4332952f93",
+    "name" : "Videl",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVidel.png?alt=media&token=d9574abe-d065-4495-b171-d5438136ed9f",
     "5L": 6
   },
   {
-    "nombre" : "Vegeta SSJ",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVegeta%20SSJ.png?alt=media&token=df23de82-2faf-4db7-a80e-9bef2e1d4e6b",
+    "name" : "Yamcha",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FYamcha.png?alt=media&token=7c48c138-483f-48d1-8e3d-1b4402a6ab50",
     "5L": 6
   },
   {
-    "nombre" : "Vegetto",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2Fvegetto.png?alt=media&token=778b8980-65d8-40ca-b7a9-cad4e49fdb45",
-    "5L": 6
-  },
-  {
-    "nombre" : "Videl",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FVidel.png?alt=media&token=d9574abe-d065-4495-b171-d5438136ed9f",
-    "5L": 6
-  },
-  {
-    "nombre" : "Yamcha",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FYamcha.png?alt=media&token=7c48c138-483f-48d1-8e3d-1b4402a6ab50",
-    "5L": 6
-  },
-  {
-    "nombre" : "Zamasu",
-    "imagen" : "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FZamasu.png?alt=media&token=b9f07e63-de49-4b70-bf2b-e34e263c3add",
+    "name" : "Zamasu",
+    "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FZamasu.png?alt=media&token=b9f07e63-de49-4b70-bf2b-e34e263c3add",
     "5L": 6
   }
 
