@@ -45,7 +45,7 @@ public class CharacterAdapter extends ArrayAdapter<Character> {
         // Carga la imagen desde la URL con Glide
         Glide.with(context)
                 .load(character.getImageURL())
-                .placeholder(R.drawable.random_icon)
+                .placeholder(R.drawable.character_empty)
                 .into(imageView);
 
         return view;

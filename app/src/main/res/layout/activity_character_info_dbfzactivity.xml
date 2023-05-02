@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CharacterInfoDBFZActivity"
+    android:background="@color/dark_gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <!-- PANEL IZQUIERDA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.60"
+            android:orientation="vertical">
+
+            <!-- NOMBRE PERSONAJE -->
+            <TextView
+                android:id="@+id/textViewCharacterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CHARACTER"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <!-- IMAGEN PERSONAJE -->
+            <ImageView
+                android:id="@+id/imageViewCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.75"
+                android:src="@drawable/character_placeholder" />
+
+            <!--
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1"
+                        android:stretchColumns="*">
+
+                        <TableRow android:layout_weight="1">
+                             <TextView
+                                style="@style/tableTextView"
+                                android:textSize="20dp"
+                                 android:textStyle="bold"
+                                android:text="TIER LIST:" />
+
+                            <TextView
+                                style="@style/tableTextView"
+                                android:textAlignment="textStart"
+                                android:textStyle="bold"
+                                android:textSize="23dp"
+                                android:textColor="@color/golden"
+                                android:text="A" />
+
+
+                        </TableRow>
+                        <TableRow android:layout_weight="1">
+                            <TextView
+                                style="@style/tableTextView"
+                                android:text="Dificultad:" />
+
+                            <TextView
+                                style="@style/tableTextView"
+                                android:textAlignment="textStart"
+                                android:text="Fácil" />
+
+
+                        </TableRow>
+                    </TableLayout>
+            -->
+
+        </LinearLayout>
+
+
+
+        <!-- PANEL DERECHA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.40"
+            android:orientation="vertical">
+
+            <!-- NOMBRE PERSONAJE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FRAMES"
+                android:textAlignment="center"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="*"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <TableRow
+                    android:id="@+id/tableRowHeader"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text=""
+                        />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:textStyle="bold"
+                        android:text="Start up" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:textStyle="bold"
+                        android:text="Block" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5LL"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5LL" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5LLL"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5LLL" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="2L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+
+                <TableRow
+                    android:id="@+id/tableRow5M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow2M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="2M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="3M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow5H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="2H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow3H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="3H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj5L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j5L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRowj2L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j2L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj5M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j5M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj5H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j5H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj2H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j2H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow236L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="236L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow236M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="236M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow236H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="236H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow214L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="214L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow214M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="214M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow214H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="214H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj236L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j236L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj236M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j236M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj236H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j236H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj214L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j214L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj214M"
+
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j214M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj214H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j214H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow22L"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="22L" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow22M"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="22M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow22H"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="22H" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="5S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="2S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj5S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j5S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj2S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j2S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow236S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="236S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow214S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="214S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowj236S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j236S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+
+
+                <TableRow
+                    android:id="@+id/tableRowj214S"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="j214S" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowAssistA"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="A" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowAssistB"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="B" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowAssistC"
+                    android:layout_weight="1">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="C" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:text="-" />
+                </TableRow>
+
+
+
+
+
+
+                <!--
+
+                <TableRow>
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="0.7"
+                        android:text="5LLL" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="1"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="1"
+                        android:text="-" />
+                </TableRow>
+
+                <TableRow android:background="@color/light_gray">
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="0.7"
+                        android:text="5M" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="1"
+                        android:text="-" />
+
+                    <TextView
+                        style="@style/tableTextView"
+                        android:layout_weight="1"
+                        android:text="-" />
+                </TableRow>
+                -->
+
+
+            </TableLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

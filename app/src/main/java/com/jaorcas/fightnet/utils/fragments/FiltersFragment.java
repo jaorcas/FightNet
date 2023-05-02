@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.jaorcas.fightnet.FiltersActivity;
 import com.jaorcas.fightnet.R;

@@ -100,8 +100,11 @@ public class LikesProvider {
         getLikesByPostID(idPost).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException error) {
-                int numberLikes =  queryDocumentSnapshots.size();
-                textViewLikes.setText(numberLikes + " Me gusta");
+                if(queryDocumentSnapshots!=null){
+                    int numberLikes =  queryDocumentSnapshots.size();
+                    textViewLikes.setText(numberLikes + " Me gusta");
+                }
+
             }
         });
     }

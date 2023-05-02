@@ -6,20 +6,26 @@ public class Post {
     private String idPost;
     private String gameTitle;
     private String description;
+    private String descriptionLowCase;
     private String image;
+    private String video;
+    private String character;
     private long timestamp;
 
     public Post(){
 
     }
 
-    public Post(String idUser, String idPost, String gameTitle, String description, String image, long timestamp) {
+    public Post(String idUser, String idPost, String gameTitle, String description, String image, String video, long timestamp, String character) {
         this.idUser = idUser;
         this.idPost = idPost;
         this.gameTitle = gameTitle;
         this.description = description;
         this.image = image;
+        this.video = video;
         this.timestamp = timestamp;
+        this.character = character;
+
     }
 
     public String getIdUser(){
@@ -67,5 +73,29 @@ public class Post {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getDescriptionLowCase() {
+        return descriptionLowCase;
+    }
+
+    public void setDescriptionLowCase(String descriptionLowCase) {
+        this.descriptionLowCase = descriptionLowCase;
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
     }
 }

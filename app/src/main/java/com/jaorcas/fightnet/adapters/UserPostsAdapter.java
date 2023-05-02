@@ -1,8 +1,10 @@
 package com.jaorcas.fightnet.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,21 +13,32 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jaorcas.fightnet.ExtraUserProfileActivity;
+import com.jaorcas.fightnet.HomeActivity;
 import com.jaorcas.fightnet.PostInfoActivity;
 import com.jaorcas.fightnet.R;
 import com.jaorcas.fightnet.models.Like;
 import com.jaorcas.fightnet.models.Post;
+import com.jaorcas.fightnet.models.SliderItem;
+import com.jaorcas.fightnet.models.User;
 import com.jaorcas.fightnet.providers.AuthProvider;
 import com.jaorcas.fightnet.providers.LikesProvider;
 import com.jaorcas.fightnet.providers.PostProvider;
@@ -33,6 +46,7 @@ import com.jaorcas.fightnet.providers.UsersProvider;
 import com.jaorcas.fightnet.utils.RelativeTime;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -62,7 +76,6 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
         DocumentSnapshot document = getSnapshots().getSnapshot(position);
         String postID = document.getId();
         String relativeTime = RelativeTime.getTimeAgo(post.getTimestamp(),context);
-        Post postSupport = post;
 
 
         //ASIGNAMOS EL TITULO Y EL RELATIVETIME DEL POST
@@ -72,7 +85,22 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
 
         if(post.getImage()!=null && !post.getImage().isEmpty()){
             Picasso.get().load(post.getImage()).into(holder.postImage);
-        }
+        }//VIDEO
+        else if(post.getVideo()!=null && !post.getVideo().isEmpty()){
+        showVideoHideImage(holder);
+
+        Glide.with(context)
+                .asFile()
+                .load(post.getVideo())
+                .into(new SimpleTarget<File>() {
+                    @Override
+                    public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                        holder.postVideo.setVideoPath(resource.getAbsolutePath());
+                        holder.postVideo.setFocusable(false);
+                        holder.postVideo.start();
+                    }
+                });
+    }
 
         //LE ASIGNAMOS AL POST FUNCIONALIDAD SI LE HACEMOS CLICK
         holder.postImage.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +112,7 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
             }
         });
 
+        /*
         //SI HACEMOS CLICK EN EL POST NOS LLEVA A MAS DETALLES
         holder.viewHolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +122,7 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
                 context.startActivity(intent);
             }
         });
-
+*/
         holder.imageViewPostOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +137,6 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
             holder.imageViewPostOptions.setVisibility(View.GONE);
         }
 
-
         getUserInfo(post.getIdUser(), holder);
     }
 
@@ -121,24 +149,15 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.itemDeletePost:
-                        postProvider.delete(postID).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(context, "Se ha borrado el post", Toast.LENGTH_SHORT).show();
-                                }
-                                else {
-                                    Toast.makeText(context, "No se ha podido borrar el post", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+
+                        deletePost(view, postID);
                         return true;
                     default:
                         return false;
                 }
             }
         });
-        //displaying the popup
+        //MOSTRAR EL POP UP
         popupMenu.show();
     }
 
@@ -172,6 +191,7 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
         TextView title;
         TextView relativeTime;
         ImageView postImage;
+        VideoView postVideo;
         CircleImageView imageUserProfile;
         ImageView imageViewPostOptions;
         View viewHolder;
@@ -181,40 +201,71 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
             title = view.findViewById(R.id.textviewPostTitle);
             relativeTime = view.findViewById(R.id.textViewRelativeTime);
             postImage = view.findViewById(R.id.imageViewPost);
+            postVideo = view.findViewById(R.id.videoViewPost);
             imageUserProfile = view.findViewById(R.id.circleImageUserPost);
             imageViewPostOptions = view.findViewById(R.id.imageViewPostOptions);
-           // imageViewPostOptions.setOnClickListener(this);
+            // imageViewPostOptions.setOnClickListener(this);
             viewHolder = view;
         }
-/*
-        @Override
-        public void onClick(View view) {
-            showMenu(view);
-        }
 
-        private void showMenu(View view){
-
-            PopupMenu popupMenu = new PopupMenu(view.getContext(),view);
-            popupMenu.inflate(R.menu.profile_post_menu);
-            popupMenu.setOnMenuItemClickListener(this);
-            popupMenu.show();
-        }
-
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-
-            switch (menuItem.getItemId()){
-
-                case R.id.itemDeletePost:
-                  //  postProvider.delete();
-                    return true;
-                default:
-                    return false;
-            }
-        }
-
- */
     }
 
+    private void showVideoHideImage(UserPostsAdapter.ViewHolder holder){
+        holder.postVideo.setVisibility(View.VISIBLE);
+        holder.postImage.setVisibility(View.GONE);
+    }
+
+    private void deletePost(View view,String postID){
+    /*
+        //AHORA INTENTAMOS BORRAR LA IMAGEN DE LA BASE DE DATOS
+        postProvider.getPostByPostID(postID).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String url = "";
+
+                if(documentSnapshot.contains("image")) {
+                    url = documentSnapshot.getString("image");
+                }else if(documentSnapshot.contains("video")){
+                    url = documentSnapshot.getString("video");
+                }
+
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference urlRef = storage.getReferenceFromUrl(url);
+
+
+                urlRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "La imagen/video se borró", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "La imagen/video no se borró", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+*/
+        postProvider.delete(postID).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                    //VISTO QUE NO PUEDO ACTUALIZAR EL ADAPTER CON LA CONSULTA CON 2 PARAMETROS,
+                    //VAMOS A HACER QUE NOS LLEVE AL HOMEACTIVITY, SOLUCION CHAPUZERA PERO POR AHORA FUNCIONA
+                    Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                    view.getContext().startActivity(intent);
+                    Toast.makeText(context, "Se ha borrado el post", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(context, "No se ha podido borrar el post", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
 
 }

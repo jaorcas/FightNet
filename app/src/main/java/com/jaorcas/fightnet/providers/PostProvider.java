@@ -26,8 +26,12 @@ public class PostProvider {
     }
 
     //BUSCAMOS TODOS LOS POST DONDE EL idUser DEL POST SEA EL MISMO QUE EL USERID DEL USUARIO QUE PASAMOS POR PARAMETRO
-    public Query getPostByUser(String userID){
+    public Query getPostsByUser(String userID){
         return collection.whereEqualTo("idUser", userID);
+    }
+
+    public Query getPostsByUserOrderedByTimestamp(String userID) {
+         return collection.whereEqualTo("idUser", userID).orderBy("timestamp",Query.Direction.DESCENDING);
     }
 
     //LO MISMO PERO CON EL ID DEL POST
@@ -38,13 +42,20 @@ public class PostProvider {
         return collection.document(id).delete();
     }
 
-    public Query getPostByCategoryAndTimestamp(String gameTitle){
+    public Query getPostByGame(String gameTitle){
         return collection.whereEqualTo("gameTitle",gameTitle).orderBy("timestamp",Query.Direction.DESCENDING);
     }
 
-    public Query getPostByDescription(String description){
-
-        return collection.whereEqualTo("description", description);
+    public Query getPostByGameAndCharacter(String gameTitle, String character){
+        return collection.whereEqualTo("gameTitle",gameTitle)
+                         .whereEqualTo("character", character)
+                         .orderBy("timestamp", Query.Direction.DESCENDING);
     }
+
+    //ESTO SOLO FILTRA SI LA DESCRIPCION ES LA MISMA QUE LA QUE PASAMOS POR PARÁMETRO, HABRÍA QUE MEJORARLO EN EL FUTURO
+    public Query getPostByDescription(String description){
+        return collection.whereEqualTo("descriptionLowCase",description.toLowerCase() );
+    }
+
 
 }

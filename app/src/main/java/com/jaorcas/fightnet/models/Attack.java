@@ -1,48 +1,32 @@
 package com.jaorcas.fightnet.models;
 
-public class Attack {
+public class Attack extends TableRowAttack {
 
-    private Integer startUpFrames, framesInBlock, damageRaw, damageScaled;
+    private String attackName, startUp, block;
 
     public Attack(){
 
     }
-    public Attack(Integer startUpFrames, Integer framesInBlock, Integer damageRaw, Integer damageScaled) {
-        this.startUpFrames = startUpFrames;
-        this.framesInBlock = framesInBlock;
-        this.damageRaw = damageRaw;
-        this.damageScaled = damageScaled;
+    public Attack(String attackName, String startUp, String block) {
+        this.attackName = attackName;
+        this.startUp = startUp;
+        this.block = block;
+
     }
 
-    public Integer getStartUpFrames() {
-        return startUpFrames;
+    public String getStartUp() {
+        return startUp;
     }
 
-    public void setStartUpFrames(Integer startUpFrames) {
-        this.startUpFrames = startUpFrames;
+    public void setStartUp(String startUp) {
+        this.startUp = startUp;
     }
 
-    public Integer getFramesInBlock() {
-        return framesInBlock;
+    public String getBlock() {
+        return block;
     }
 
-    public void setFramesInBlock(Integer framesInBlock) {
-        this.framesInBlock = framesInBlock;
-    }
-
-    public Integer getDamageRaw() {
-        return damageRaw;
-    }
-
-    public void setDamageRaw(Integer damageRaw) {
-        this.damageRaw = damageRaw;
-    }
-
-    public Integer getDamageScaled() {
-        return damageScaled;
-    }
-
-    public void setDamageScaled(Integer damageScaled) {
-        this.damageScaled = damageScaled;
+    public void setBlock(String block) {
+        this.block = block;
     }
 }

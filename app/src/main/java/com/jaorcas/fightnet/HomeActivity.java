@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.jaorcas.fightnet.utils.fragments.ChatFragment;
 import com.jaorcas.fightnet.utils.fragments.FiltersFragment;
 import com.jaorcas.fightnet.utils.fragments.HomeFragment;
 import com.jaorcas.fightnet.utils.fragments.ProfileFragment;
@@ -51,15 +50,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    //ESTO ES PARA CERRAR LA APLICACION CUANDO PULSAMOS HACIA ATRÁS
-    //PENDIENTE DE PRUEBAS
-    /*
-    @Override
-    public void onBackPressed() {
-        finishAffinity();
-
-    }
-*/
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);

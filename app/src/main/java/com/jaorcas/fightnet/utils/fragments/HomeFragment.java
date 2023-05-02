@@ -18,9 +18,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jaorcas.fightnet.MainActivity;
 import com.jaorcas.fightnet.PostActivity;
 import com.jaorcas.fightnet.R;
@@ -135,7 +137,7 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
         inflater.inflate(R.menu.main_menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
+/*
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.itemLogOut){
@@ -151,20 +153,7 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
-
-    private void searchByDescription(String description){
-
-        super.onStart();
-        Query query = postProvider.getPostByDescription(description);
-        FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
-                .setQuery(query, Post.class).build();
-
-        postsAdapterSearch = new PostsAdapter(options, getContext());
-        postsAdapterSearch.notifyDataSetChanged();
-        recyclerView.setAdapter(postsAdapterSearch);
-        postsAdapterSearch.startListening();
-    }
+*/
 
     @Override
     public void onStart() {
@@ -191,13 +180,27 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
 
     @Override
     public void onSearchConfirmed(CharSequence text) {
-        Toast.makeText(getContext(), "Tu busqueda fue: " + text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Tu busqueda fue: " + text.toString(), Toast.LENGTH_SHORT).show();
         searchByDescription(text.toString());
     }
 
     @Override
     public void onButtonClicked(int buttonCode) {
 
+    }
+
+    private void searchByDescription(String description){
+
+        super.onStart();
+        Query query = postProvider.getPostByDescription(description);
+
+        FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
+                .setQuery(query, Post.class).build();
+
+        postsAdapterSearch = new PostsAdapter(options, getContext());
+        postsAdapterSearch.notifyDataSetChanged();
+        recyclerView.setAdapter(postsAdapterSearch);
+        postsAdapterSearch.startListening();
     }
 
     private void getAllPosts(){

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -22,10 +23,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.storage.UploadTask;
+import com.jaorcas.fightnet.adapters.CharacterAdapter;
 import com.jaorcas.fightnet.adapters.GamesAdapter;
+import com.jaorcas.fightnet.enums.EnumGames;
 import com.jaorcas.fightnet.enums.EnumMedia;
+import com.jaorcas.fightnet.models.Character;
+import com.jaorcas.fightnet.models.Game;
 import com.jaorcas.fightnet.models.Post;
 import com.jaorcas.fightnet.providers.AuthProvider;
+import com.jaorcas.fightnet.providers.CharactersProvider;
 import com.jaorcas.fightnet.providers.GamesProvider;
 import com.jaorcas.fightnet.providers.PostProvider;
 import com.jaorcas.fightnet.providers.UploadMediaProvider;
@@ -33,6 +39,7 @@ import com.jaorcas.fightnet.utils.FileUtil;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -55,16 +62,20 @@ public class PostActivity extends AppCompatActivity {
     PostProvider postProvider;
     AuthProvider authProvider;
     GamesProvider gamesProvider;
+    CharactersProvider charactersProvider;
 
     //ELEMENTOS UI
     TextInputEditText textInputTitle;
     TextInputEditText textInputDescription;
     Button buttonPost;
     CircleImageView circleBack;
-    Spinner spinner;
+    Spinner spinnerGames;
+    Spinner spinnerCharacters;
 
-    String title = "";
+    String gameTitle = "";
     String description = "";
+    EnumGames gameSelected = EnumGames.DRAGON_BALL_FIGHTERZ;
+    String characterSelected = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +87,61 @@ public class PostActivity extends AppCompatActivity {
         postProvider = new PostProvider();
         authProvider = new AuthProvider();
         gamesProvider = new GamesProvider();
+        charactersProvider = new CharactersProvider();
 
         //ELEMENTOS UI
         textInputDescription = findViewById(R.id.textInputDescription);
         circleBack = findViewById(R.id.circleArrowBack);
+        spinnerGames = findViewById(R.id.spinnerGames);
+        spinnerCharacters = findViewById(R.id.spinnerCharacters);
 
         //SPINNER DE JUEGOS
-        spinner = findViewById(R.id.spinnerGames);
+        GamesAdapter gamesAdapter = new GamesAdapter(this,gamesProvider.getAllGamesList());
+        gamesAdapter.setDropDownViewResource(R.layout.my_dropdown_item);
+        spinnerGames.setAdapter(gamesAdapter);
 
-        GamesAdapter adapter = new GamesAdapter(getApplicationContext(), gamesProvider.getAllGamesList());
-        adapter.setDropDownViewResource(R.layout.my_dropdown_item);
-        spinner.setAdapter(adapter);
+        //SPINNER PERSONAJES
+        //OBTENEMOS LA LISTA DE LOS PERSONAJES
+        List<Character> listCharacters;
+        listCharacters = charactersProvider.getCharacterListByEnum(this,gameSelected);
+
+        CharacterAdapter characterAdapter = new CharacterAdapter(this,listCharacters);
+        spinnerCharacters.setAdapter(characterAdapter);
+
+        //SPINNERGAMES LISTENER
+        spinnerGames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                Game game = (Game) parent.getItemAtPosition(position);
+                gameTitle = game.getName();
+                List<Character> allCharacters = charactersProvider.getCharacterListByEnum(PostActivity.this, game.getEnumGame());
+                characterAdapter.clear();
+                characterAdapter.addAll(allCharacters);
+                spinnerCharacters.setSelection(0);
+                characterAdapter.notifyDataSetChanged();
+                gameSelected = game.getEnumGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        //OBTENEMOS EL PERSONAJE SELECCIONADO
+        spinnerCharacters.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                Character character = (Character) parent.getItemAtPosition(position);
+
+                if(character.getName().equals("-"))
+                    characterSelected = null;
+                else
+                    characterSelected = character.getName();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
 
 
         //VENTANA DE "ESPERE UN MOMENTO"
@@ -134,15 +189,7 @@ public class PostActivity extends AppCompatActivity {
 
                 dialog.show();
 
-                switch (mediaSelected){
-                    case IMAGE:
-                        clickPost();
-                    break;
-                    case VIDEO:
-                        saveVideo();
-                    break;
-                    default:
-                }
+                clickPost();
 
             }
         });
@@ -204,7 +251,7 @@ public class PostActivity extends AppCompatActivity {
 
 
     private void saveImage(){
-
+        buttonPost.setEnabled(false);
         uploadMediaProvider.saveImage(PostActivity.this,imageFile).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -220,19 +267,22 @@ public class PostActivity extends AppCompatActivity {
                             Post post = new Post();
                             post.setIdUser(authProvider.getUid());
                             post.setImage(url);
-                            post.setGameTitle(title);
+                            post.setGameTitle(gameTitle);
                             post.setDescription(description);
+                            post.setDescriptionLowCase(description.toLowerCase());
                             post.setTimestamp(new Date().getTime());
+
+                            if(characterSelected != null) post.setCharacter(characterSelected);
 
                             postProvider.save(post).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> _task) {
                                     clearForm();
-                                    if(_task.isSuccessful()){
-                                        Toast.makeText(PostActivity.this, "El post se almaceno correctamente", Toast.LENGTH_SHORT).show();
-                                    }else{
-                                        Toast.makeText(PostActivity.this, "No se ha podido almacenar la informacion", Toast.LENGTH_SHORT).show();
-                                    }
+                                    if(_task.isSuccessful())
+                                        System.out.println("El post se almacenó correctamente");
+                                    else
+                                        System.out.println("El post NO se almacenó correctamente");
+
                                 }
                             });
                         }
@@ -241,6 +291,7 @@ public class PostActivity extends AppCompatActivity {
 
                     Toast.makeText(PostActivity.this, "La imagen se ha guardado correctamente", Toast.LENGTH_SHORT).show();
                 }else{
+                    buttonPost.setEnabled(true);
                     Toast.makeText(PostActivity.this, "Error al guardar la imagen", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -248,14 +299,47 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void saveVideo(){
-
+        buttonPost.setEnabled(false);
         uploadMediaProvider.saveVideo(PostActivity.this,videoFile).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                 dialog.dismiss();
+
                 if(task.isSuccessful()){
-                    Toast.makeText(PostActivity.this, "El vídeo se ha guardado correctamente", Toast.LENGTH_SHORT).show();
+
+                    uploadMediaProvider.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            //ESTA ES LA URL DE LA IMAGEN QUE HEMOS SUBIDO
+                            String url = uri.toString();
+
+                            Post post = new Post();
+                            post.setIdUser(authProvider.getUid());
+                            post.setVideo(url);
+                            post.setGameTitle(gameTitle);
+                            post.setDescription(description);
+                            post.setDescriptionLowCase(description.toLowerCase());
+                            post.setTimestamp(new Date().getTime());
+                            if(characterSelected != null) post.setCharacter(characterSelected);
+
+                            postProvider.save(post).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> _task) {
+                                    clearForm();
+                                    if(_task.isSuccessful())
+                                        System.out.println("El post se almacenó correctamente");
+                                    else
+                                        System.out.println("El post NO se almacenó correctamente");
+
+                                }
+                            });
+                        }
+                    });
+
+
+                    Toast.makeText(PostActivity.this, "El video se ha guardado correctamente", Toast.LENGTH_SHORT).show();
                 }else{
+                    buttonPost.setEnabled(true);
                     Toast.makeText(PostActivity.this, "Error al guardar el video", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -265,16 +349,15 @@ public class PostActivity extends AppCompatActivity {
 
     private void clickPost(){
 
-        //EL TITULO SERÁ EL JUEGO ELEGIDO EN EL SPINNER
-        title = spinner.getSelectedItem().toString();
+        //EL TITULO SERÁ ELEGIDO POR EL SPINNER EN LA PARTE SUPERIOR
+
         description = textInputDescription.getText().toString();
 
         if(!description.isEmpty()){
             if(imageFile!=null){
                 saveImage();
-            }else{
-                //POR AHORA VAMOS A OBLIGAR AL USUARIO QUE PONGA UNA IMAGEN
-                Toast.makeText(this, "Por favor interte una imagen", Toast.LENGTH_SHORT).show();
+            }else if(videoFile!=null){
+                saveVideo();
             }
 
         }else{
@@ -294,6 +377,10 @@ public class PostActivity extends AppCompatActivity {
         description = "";
         imageFile = null;
         videoFile = null;
+        characterSelected = null;
+
+        //UNA VEZ LIMPIAMOS EL FORMULARIO, VOLVEMOS A LA ACTIVIDAD PRINCIPAL
+        finish();
 
     }
 

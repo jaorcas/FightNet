@@ -13,32 +13,37 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.jaorcas.fightnet.adapters.CommentsAdapter;
-import com.jaorcas.fightnet.adapters.PostsAdapter;
 import com.jaorcas.fightnet.adapters.SliderAdapter;
+import com.jaorcas.fightnet.enums.EnumGames;
+import com.jaorcas.fightnet.models.Character;
 import com.jaorcas.fightnet.models.Comment;
 import com.jaorcas.fightnet.models.Like;
-import com.jaorcas.fightnet.models.Post;
 import com.jaorcas.fightnet.models.SliderItem;
 import com.jaorcas.fightnet.providers.AuthProvider;
+import com.jaorcas.fightnet.providers.CharactersProvider;
 import com.jaorcas.fightnet.providers.CommentsProvider;
 import com.jaorcas.fightnet.providers.GamesProvider;
 import com.jaorcas.fightnet.providers.LikesProvider;
@@ -50,6 +55,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,6 +81,7 @@ public class PostInfoActivity extends AppCompatActivity {
     CommentsProvider commentsProvider;
     AuthProvider authProvider;
     LikesProvider likesProvider;
+    CharactersProvider charactersProvider;
 
     //UI
     CircleImageView circleImageUserProfile;
@@ -83,15 +90,21 @@ public class PostInfoActivity extends AppCompatActivity {
     TextView textViewGameTitle;
     TextView textViewPostDescription;
     ImageView imageViewGameIcon;
+    VideoView videoViewPost;
     TextView textRelativeTime;
     ImageView imageViewLike;
     TextView textViewLike;
+    RelativeLayout videoContainer;
+    CardView cardViewCharacter;
 
     TextInputEditText textCommentary;
     Button buttonCommentary;
 
-
     String userID = "";
+    EnumGames gameEnum = null;
+    TextView textViewCharacterName;
+    String characterName = null;
+    ImageView imageViewCharacterIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +119,7 @@ public class PostInfoActivity extends AppCompatActivity {
         commentsProvider = new CommentsProvider();
         authProvider = new AuthProvider();
         likesProvider = new LikesProvider();
+        charactersProvider = new CharactersProvider();
 
         postID = getIntent().getStringExtra("idPost");
 
@@ -119,12 +133,19 @@ public class PostInfoActivity extends AppCompatActivity {
         textRelativeTime = findViewById(R.id.textRelativeTime);
         imageViewLike = findViewById(R.id.imageViewLike);
         textViewLike = findViewById(R.id.textViewLike);
+        videoViewPost = findViewById(R.id.videoViewPost);
+        videoContainer = findViewById(R.id.video_container);
+        textViewCharacterName = findViewById(R.id.textViewCharacterName);
+        imageViewCharacterIcon = findViewById(R.id.imageViewCharacterIcon);
 
+        //CARDVIEW CHARACTER
+        cardViewCharacter = findViewById(R.id.cardViewCharacter);
+
+        //RECYCLERVIEW
         recyclerView = findViewById(R.id.recyclerViewComments);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(PostInfoActivity.this);
         recyclerView.setLayoutManager(linearLayoutManager);
-
 
         //ESCRIBIR COMENTARIO
         textCommentary = findViewById(R.id.textInputCommentary);
@@ -169,6 +190,13 @@ public class PostInfoActivity extends AppCompatActivity {
             }
         });
 
+        cardViewCharacter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToCharacterInfo();
+            }
+        });
+
         getPost();
         likesProvider.getNumberOfLikes(postID,textViewLike);
         likesProvider.checkLikeExists(postID,authProvider.getUid(),imageViewLike);
@@ -183,18 +211,34 @@ public class PostInfoActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     //AÑADIMOS A NUESTRA LISTA DE IMAGENES LA IMAGEN 1, EN CASO DE QUE LUEGO QUERAMOS AÑADIR MAS
-                   if(documentSnapshot.contains("image")) {
+                   if(documentSnapshot.contains("image") && documentSnapshot.getString("image") != null) {
                        String image = documentSnapshot.getString("image");
                        SliderItem item = new SliderItem();
                        item.setImageURL(image);
                        listSliderItem.add(item);
 
-                       /*
-                       String image2 = documentSnapshot.getString("description");
-                       SliderItem item2 = new SliderItem();
-                       item2.setImageURL(image2);
-                       listSliderItem.add(item2);
-                       */
+                   }//SI ES UN VÍDEO
+                   else if(documentSnapshot.contains("video") && documentSnapshot.getString("video") != null){
+                       String videoURL = documentSnapshot.getString("video");
+                       showVideoHideImage();
+
+                       VideoView videoViewPost = findViewById(R.id.videoViewPost);
+
+                       Glide.with(PostInfoActivity.this)
+                               .asFile()
+                               .load(videoURL)
+                               .into(new SimpleTarget<File>() {
+                                   @Override
+                                   public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                                       videoViewPost.setVideoPath(resource.getAbsolutePath());
+                                       videoViewPost.start();
+
+                                   }
+                               });
+
+                       MediaController mediaController = new MediaController(PostInfoActivity.this);
+                       mediaController.setAnchorView(videoViewPost);
+                       videoViewPost.setMediaController(mediaController);
 
                    }
 
@@ -206,6 +250,7 @@ public class PostInfoActivity extends AppCompatActivity {
                         gameTitle = documentSnapshot.getString("gameTitle");
                         textViewGameTitle.setText(gameTitle);
                         imageViewGameIcon.setImageResource(gamesProvider.getImageByCategory(gameTitle));
+                        gameEnum = gamesProvider.getEnumByStringGameName(gameTitle);
                     }
 
                     //OBTENEMOS LA INFORMACIÓN DEL USUARIO
@@ -221,6 +266,19 @@ public class PostInfoActivity extends AppCompatActivity {
                         textRelativeTime.setText(relativeTime);
 
                     }
+
+                    if(documentSnapshot.getString("character")==null)
+                        cardViewCharacter.setVisibility(View.GONE);
+                    else{
+                        cardViewCharacter.setVisibility(View.VISIBLE);
+                        characterName = documentSnapshot.getString("character");
+                        textViewCharacterName.setText(characterName);
+                        Character character = charactersProvider.getCharacterByEnumAndCharacterName2(PostInfoActivity.this, gameEnum,characterName);
+                        String url = character.getImageURL();
+                        Picasso.get().load(url).into(imageViewCharacterIcon);
+                    }
+
+
 
 
                    instanceSlider();
@@ -246,7 +304,7 @@ public class PostInfoActivity extends AppCompatActivity {
     }
 
     //VAMOS AL PERFIL DEL USUARIO PULSANDO EN SU ICONO
-    public void goToUserProfile(){
+    private void goToUserProfile(){
 
         if(userID==null){
             return;
@@ -254,6 +312,12 @@ public class PostInfoActivity extends AppCompatActivity {
 
         Intent intent = new Intent(PostInfoActivity.this, ExtraUserProfileActivity.class);
         intent.putExtra("idUser", userID);
+        startActivity(intent);
+    }
+
+    private void goToCharacterInfo(){
+        Intent intent = new Intent(PostInfoActivity.this, gamesProvider.getCharacterActivityByEnum(gameEnum));
+        intent.putExtra("character", characterName);
         startActivity(intent);
     }
 
@@ -326,5 +390,11 @@ public class PostInfoActivity extends AppCompatActivity {
         sliderView.setInfiniteAdapterEnabled(false);
         sliderView.setScrollTimeInSec(2);
     }
+
+    private void showVideoHideImage(){
+        videoContainer.setVisibility(View.VISIBLE);
+        sliderView.setVisibility(View.GONE);
+    }
+
 
 }

@@ -6,14 +6,16 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="25dp">
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="5dp">
 
         <ImageView
             android:id="@+id/imgDropDown"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
+            android:scaleType="fitCenter"
             android:layout_marginLeft="15sp"/>
 
           <TextView
@@ -24,7 +26,6 @@
               android:layout_marginLeft="10dp"
               android:textColor="@color/white"
               android:layout_gravity="center"/>
-
 
       </LinearLayout>
 
