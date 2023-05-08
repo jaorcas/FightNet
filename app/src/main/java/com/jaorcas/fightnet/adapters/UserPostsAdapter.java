@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -59,6 +60,9 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
     PostProvider postProvider;
     Context context;
 
+    String urlImage = null;
+    String urlVideo = null;
+
     public UserPostsAdapter(FirestoreRecyclerOptions<Post> options, Context context){
         super(options);
         this.context = context;
@@ -82,6 +86,10 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
         holder.title.setText(post.getDescription());
         holder.relativeTime.setText(relativeTime);
 
+        if(post.getImage()!=null)
+            urlImage = post.getImage();
+        else if(post.getVideo()!=null)
+            urlVideo = post.getVideo();
 
         if(post.getImage()!=null && !post.getImage().isEmpty()){
             Picasso.get().load(post.getImage()).into(holder.postImage);
@@ -89,6 +97,29 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
         else if(post.getVideo()!=null && !post.getVideo().isEmpty()){
         showVideoHideImage(holder);
 
+            Glide.with(context)
+                    .asFile()
+                    .load(post.getVideo())
+                    .into(new SimpleTarget<File>() {
+                        @Override
+                        public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                            holder.postVideo.setVideoPath(resource.getAbsolutePath());
+                            holder.postVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                @Override
+                                public void onPrepared(MediaPlayer mp) {
+                                    // Desactivamos el sonido
+                                    mp.setVolume(0.0f, 0.0f);
+
+                                    mp.setLooping(true);
+                                    holder.postVideo.start();
+                                }
+                            });
+                            holder.postVideo.setFocusable(false);
+                        }
+                    });
+
+
+/*
         Glide.with(context)
                 .asFile()
                 .load(post.getVideo())
@@ -100,10 +131,24 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
                         holder.postVideo.start();
                     }
                 });
+
+ */
     }
+
+
 
         //LE ASIGNAMOS AL POST FUNCIONALIDAD SI LE HACEMOS CLICK
         holder.postImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PostInfoActivity.class);
+                intent.putExtra("idPost", postID);
+                context.startActivity(intent);
+            }
+        });
+
+        //LE ASIGNAMOS AL VIDEO FUNCIONALIDAD SI LE HACEMOS CLICK
+        holder.postVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PostInfoActivity.class);
@@ -149,7 +194,7 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.itemDeletePost:
-
+                        deleteMedia(postID);
                         deletePost(view, postID);
                         return true;
                     default:
@@ -215,45 +260,46 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
         holder.postImage.setVisibility(View.GONE);
     }
 
-    private void deletePost(View view,String postID){
-    /*
+    private void deleteMedia(String postID){
+
         //AHORA INTENTAMOS BORRAR LA IMAGEN DE LA BASE DE DATOS
-        postProvider.getPostByPostID(postID).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String url = "";
+        String url = "";
+       if(urlImage !=null){
+           url = urlImage;
+       }else if(urlVideo!=null){
+           url = urlVideo;
+       }
 
-                if(documentSnapshot.contains("image")) {
-                    url = documentSnapshot.getString("image");
-                }else if(documentSnapshot.contains("video")){
-                    url = documentSnapshot.getString("video");
+        try{
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference urlRef = storage.getReferenceFromUrl(url);
+
+
+            urlRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(context, "La imagen/video se borró", Toast.LENGTH_SHORT).show();
                 }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(context, "La imagen/video no se borró", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference urlRef = storage.getReferenceFromUrl(url);
+    }
 
+    private void deletePost(View view,String postID){
 
-                urlRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(context, "La imagen/video se borró", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "La imagen/video no se borró", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-*/
         postProvider.delete(postID).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
 
-                    //VISTO QUE NO PUEDO ACTUALIZAR EL ADAPTER CON LA CONSULTA CON 2 PARAMETROS,
+                    //VISTO QUE NO PUEDO ACTUALIZAR EL ADAPTER CON LA CONSULTA QUERY CON 2 PARÁMETROS,
                     //VAMOS A HACER QUE NOS LLEVE AL HOMEACTIVITY, SOLUCION CHAPUZERA PERO POR AHORA FUNCIONA
                     Intent intent = new Intent(view.getContext(), HomeActivity.class);
                     view.getContext().startActivity(intent);
@@ -264,7 +310,6 @@ public class UserPostsAdapter extends FirestoreRecyclerAdapter<Post, UserPostsAd
                 }
             }
         });
-
 
     }
 

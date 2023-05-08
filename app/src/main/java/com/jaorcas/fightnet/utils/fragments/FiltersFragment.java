@@ -129,7 +129,7 @@ public class FiltersFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-        //GUARDAMOS EL PERSONAJE ELEGIDO, POR SI LUEGO HACEMOS DICHA FUNCIONALIDAD
+        //GUARDAMOS EL PERSONAJE ELEGIDO, PARA LUEGO FILTRAR POR PJ
         spinnerCharacters.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {

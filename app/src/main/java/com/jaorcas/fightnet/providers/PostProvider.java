@@ -57,5 +57,10 @@ public class PostProvider {
         return collection.whereEqualTo("descriptionLowCase",description.toLowerCase() );
     }
 
+    public Query getPostsWithDescriptionContaining(String description) {
+        return collection.whereGreaterThanOrEqualTo("descriptionLowCase", description)
+                .whereLessThanOrEqualTo("descriptionLowCase", description + "\uf8ff");
+    }
+
 
 }

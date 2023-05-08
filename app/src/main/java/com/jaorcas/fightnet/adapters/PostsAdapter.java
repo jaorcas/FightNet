@@ -2,6 +2,7 @@ package com.jaorcas.fightnet.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +101,17 @@ public class PostsAdapter extends FirestoreRecyclerAdapter<Post,PostsAdapter.Vie
                         @Override
                         public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
                             holder.postVideo.setVideoPath(resource.getAbsolutePath());
+                            holder.postVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                @Override
+                                public void onPrepared(MediaPlayer mp) {
+                                    // Desactivamos el sonido
+                                    mp.setVolume(0.0f, 0.0f);
+
+                                    mp.setLooping(true);
+                                    holder.postVideo.start();
+                                }
+                            });
                             holder.postVideo.setFocusable(false);
-                            holder.postVideo.start();
                         }
                     });
         }

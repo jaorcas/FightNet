@@ -1,98 +1,98 @@
 [
   {
-    "nombre" : "-",
+    "name" : "-",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/DBFZ%2FNone.png?alt=media&token=9c6b29e3-9311-4aaf-a1af-bc8537173b32"
   },
   {
-    "nombre" : "Anji Mito",
+    "name" : "Anji Mito",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FAnji%20Mito.png?alt=media&token=d43236ff-d5a4-46a8-bb9b-8fd2505cfd00"
   },
   {
-    "nombre" : "Axl Low",
+    "name" : "Axl Low",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FAxl%20Low.png?alt=media&token=8be35a76-3dbb-4ea9-a8e8-80f59c8632d6"
   },
   {
-    "nombre" : "Baiken",
+    "name" : "Baiken",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FBaiken.png?alt=media&token=dfdacb87-ce17-4b39-875d-1bae4cb61186"
   },
   {
-    "nombre" : "Bedman?",
+    "name" : "Bedman?",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FBedman.png?alt=media&token=da67357a-e22d-4013-a053-fbc91eaf4715"
   },
   {
-    "nombre" : "Bridget?",
+    "name" : "Bridget?",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FBridget.png?alt=media&token=0825b2a4-96cf-4784-ae3f-bdc79fd4e89e"
   },
   {
-    "nombre" : "Chipp",
+    "name" : "Chipp",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FChipp.png?alt=media&token=252696a9-341b-4e46-8386-7d90334e336f"
   },
   {
-    "nombre" : "Faust",
+    "name" : "Faust",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FFaust.png?alt=media&token=ed3ecdd6-c886-4d28-b766-956751be299c"
   },
   {
-    "nombre" : "Giovanna",
+    "name" : "Giovanna",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FGiovanna.png?alt=media&token=064ed3e4-bbfa-416d-bc86-71bd88dbe11e"
   },
   {
-    "nombre" : "Goldlewis",
+    "name" : "Goldlewis",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FGoldlewis.png?alt=media&token=b73c0720-89e5-4ea3-8dd6-82854a67a7fc"
   },
   {
-    "nombre" : "Happy Chaos",
+    "name" : "Happy Chaos",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FHappy%20Chaos.png?alt=media&token=e35d6a4f-e943-4ddd-8857-dc065c481362"
   },
   {
-    "nombre" : "Ino",
+    "name" : "Ino",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FIno.png?alt=media&token=08fbb1de-6aa7-4579-afc5-18debf46ec5b"
   },
   {
-    "nombre" : "Jack-O",
+    "name" : "Jack-O",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FJack-O.png?alt=media&token=aa5ef159-7a79-48b4-984a-853dc592e728"
   },
   {
-    "nombre" : "Sin Kiske",
+    "name" : "Sin Kiske",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FKy%20Kiske.png?alt=media&token=ec3152a1-7f69-4da9-bb8b-f176e3b107fa"
   },
   {
-    "nombre" : "Leo Whitefang",
+    "name" : "Leo Whitefang",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FLeo%20Whitefang.png?alt=media&token=6abfd449-77c1-4d41-a0dc-e10c6f5fcd49"
   },
   {
-    "nombre" : "May",
+    "name" : "May",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FMay.png?alt=media&token=734a5946-1849-4a2f-829f-3f0de7ae68f5"
   },
   {
-    "nombre" : "Millia Rage",
+    "name" : "Millia Rage",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FMillia%20Rage.png?alt=media&token=a9d359f7-58da-4a0d-8164-7b7d6397446c"
   },
   {
-    "nombre" : "Nagoriyuki",
+    "name" : "Nagoriyuki",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FNagoriyuki.png?alt=media&token=543eb971-a54e-4e36-9b13-a6bbec859682"
   },
   {
-    "nombre" : "Potemkin",
+    "name" : "Potemkin",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FPotemkin.png?alt=media&token=8f5ff19b-1b90-4c86-af6c-550489e440e5"
   },
   {
-    "nombre" : "Ramlethal",
+    "name" : "Ramlethal",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FRamlethal%20Valentine.png?alt=media&token=4bd6a233-e33c-4473-be29-fc13f979ea6d"
   },
   {
-    "nombre" : "Sin Kiske",
+    "name" : "Sin Kiske",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FSin%20Kiske.png?alt=media&token=fbfd373a-7a06-4da4-a624-d2b36c1397da"
   },
   {
-    "nombre" : "Sol Badguy",
+    "name" : "Sol Badguy",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FSol%20Badguy.png?alt=media&token=c71afc69-9167-4cc0-8249-a4ad31c4e062"
   },
   {
-    "nombre" : "Testament",
+    "name" : "Testament",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FTestament.png?alt=media&token=50bbe3e8-2324-4ad8-8efe-f1f7c89e9ece"
   },
   {
-    "nombre" : "Zato-1",
+    "name" : "Zato-1",
     "image": "https://firebasestorage.googleapis.com/v0/b/fightnet-508c4.appspot.com/o/GGStrive%2FZato-1.png?alt=media&token=e0e4d4f9-b68c-4967-a009-ecbf637223ff"
   }
 ]
