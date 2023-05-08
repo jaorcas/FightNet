@@ -122,13 +122,13 @@ public class ExtraUserProfileActivity extends AppCompatActivity {
                     textViewEmail.setText(documentSnapshot.getString("email"));
 
                     //PICASSO ES PARA ASIGNAR LAS 2 IMAGENES DE LA BASE DE DATOS A LOS CONTENEDORES
-                    if(documentSnapshot.contains("imageProfile")){
+                    if(documentSnapshot.contains("imageProfile") && documentSnapshot.getString("imageProfile")!=null){
                         String urlImageProfile = documentSnapshot.getString("imageProfile");
                         //SI LA URL ES VACÍA, NO LE ASIGNAMOS LA IMAGEN PARA EVITAR ERRORES
                         if(urlImageProfile!=null) Picasso.get().load(urlImageProfile).into(circleImageProfile);
                     }
 
-                    if(documentSnapshot.contains("imageBanner")){
+                    if(documentSnapshot.contains("imageBanner") && documentSnapshot.getString("imageBanner")!=null){
                         String urlImageBanner = documentSnapshot.getString("imageBanner");
                         if(urlImageBanner!=null) Picasso.get().load(urlImageBanner).into(imageviewBanner);
                     }

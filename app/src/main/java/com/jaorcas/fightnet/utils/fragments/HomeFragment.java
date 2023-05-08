@@ -12,18 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.jaorcas.fightnet.MainActivity;
 import com.jaorcas.fightnet.PostActivity;
 import com.jaorcas.fightnet.R;
 import com.jaorcas.fightnet.adapters.PostsAdapter;
@@ -120,14 +116,14 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToPost();
+                goToCreatePost();
             }
         });
 
         return view;
     }
 
-    private void goToPost(){
+    private void goToCreatePost(){
         Intent intent = new Intent(getContext(), PostActivity.class);
         startActivity(intent);
     }
@@ -137,23 +133,6 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
         inflater.inflate(R.menu.main_menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-/*
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.itemLogOut){
-            logOut();
-        }
-
-        return true;
-    }
-
-    private void logOut(){
-        authProvider.logOut();
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-*/
 
     @Override
     public void onStart() {
@@ -192,8 +171,8 @@ public class HomeFragment extends Fragment  implements  MaterialSearchBar.OnSear
     private void searchByDescription(String description){
 
         super.onStart();
-        Query query = postProvider.getPostByDescription(description);
-
+        Query query = postProvider.getPostsWithDescriptionContaining(description.toLowerCase());
+        //Query query = postProvider.getAll();
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class).build();
 

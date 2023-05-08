@@ -202,7 +202,7 @@ public class PostActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         //ESTO ES PARA QUE NOS DEJE ELEGIR TANTO IMAGENES COMO VIDEOS
-        intent.setType("*/*");
+        intent.setType("video/*, image/*");
 
         startActivityForResult(intent, GALLERY_REQUEST_CODE);
     }
@@ -362,7 +362,7 @@ public class PostActivity extends AppCompatActivity {
 
         }else{
             dialog.dismiss();
-            Toast.makeText(this, "Por favor complete los campos y la categoría", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor complete la descripción", Toast.LENGTH_SHORT).show();
         }
 
     }

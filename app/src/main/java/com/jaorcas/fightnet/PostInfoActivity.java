@@ -273,7 +273,7 @@ public class PostInfoActivity extends AppCompatActivity {
                         cardViewCharacter.setVisibility(View.VISIBLE);
                         characterName = documentSnapshot.getString("character");
                         textViewCharacterName.setText(characterName);
-                        Character character = charactersProvider.getCharacterByEnumAndCharacterName2(PostInfoActivity.this, gameEnum,characterName);
+                        Character character = charactersProvider.getCharacterByEnumAndCharacterName(PostInfoActivity.this, gameEnum,characterName);
                         String url = character.getImageURL();
                         Picasso.get().load(url).into(imageViewCharacterIcon);
                     }
@@ -296,7 +296,10 @@ public class PostInfoActivity extends AppCompatActivity {
 
                     textViewUsername.setText(documentSnapshot.getString("username"));
                     textViewEmail.setText(documentSnapshot.getString("email"));
-                    Picasso.get().load(documentSnapshot.getString("imageProfile")).into(circleImageUserProfile);
+                    if(documentSnapshot.contains("imageProfile") && documentSnapshot.getString("imageProfile")!=null) {
+                        Picasso.get().load(documentSnapshot.getString("imageProfile")).into(circleImageUserProfile);
+                    }
+
                 }
             }
         });

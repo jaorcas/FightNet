@@ -16,7 +16,7 @@
             android:id="@+id/circleImageUserPost"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/default_profile_background"/>
+            android:src="@drawable/ic_person"/>
 
 
 
@@ -50,7 +50,7 @@
             <ImageView
                 android:id="@+id/imageViewPost"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="160dp"
                 android:src="@drawable/default_profile_background"
                 android:layout_marginTop="5dp"
                 android:scaleType="centerCrop"/>
@@ -59,7 +59,7 @@
             <VideoView
                 android:id="@+id/videoViewPost"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="160dp"
                 android:layout_marginTop="5dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -67,8 +67,6 @@
                 android:layout_alignParentRight="true"
                 android:backgroundTint="@color/black"
                 android:visibility="gone"/>
-
-
 
 
 

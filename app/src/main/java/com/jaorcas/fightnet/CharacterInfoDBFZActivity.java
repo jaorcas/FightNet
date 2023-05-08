@@ -12,7 +12,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.jaorcas.fightnet.enums.EnumGames;
-import com.jaorcas.fightnet.models.Attack;
 import com.jaorcas.fightnet.models.DBFZCharacter;
 import com.jaorcas.fightnet.models.TableRowAttack;
 import com.jaorcas.fightnet.providers.CharactersProvider;
@@ -20,7 +19,6 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
@@ -39,7 +37,6 @@ public class CharacterInfoDBFZActivity extends AppCompatActivity {
     TextView textViewStartup;
     TextView textViewBlock;
 
-    int tableColor = 0xC8C8C8;
     int numberOfRows = 0;
 
 
@@ -55,7 +52,7 @@ public class CharacterInfoDBFZActivity extends AppCompatActivity {
                 .setMessage("Espere un momento")
                 .setCancelable(false).build();
 
-        dialog.show();
+
 
         //UIS
         textViewCharacterName = findViewById(R.id.textViewCharacterName);
@@ -66,21 +63,28 @@ public class CharacterInfoDBFZActivity extends AppCompatActivity {
         charactersProvider = new CharactersProvider();
 
         String characterName = getIntent().getStringExtra("character");
-        character = (DBFZCharacter) charactersProvider.getCharacterByEnumAndCharacterName2(this, EnumGames.DRAGON_BALL_FIGHTERZ, characterName);
+        character = (DBFZCharacter) charactersProvider.getCharacterByEnumAndCharacterName(this, EnumGames.DRAGON_BALL_FIGHTERZ, characterName);
+
+        if(character.getImageURL_fullbody()!=null)
+            dialog.show();
 
         //LE ASIGNAMOS EL NOMBRE Y LA IMAGEN
         textViewCharacterName.setText(character.getName().toUpperCase());
-        Picasso.get().load(character.getImageURL_fullbody()).into(imageViewCharacter, new Callback() {
-            @Override
-            public void onSuccess() {
-                dialog.dismiss();
-            }
 
-            @Override
-            public void onError(Exception e) {
-                dialog.dismiss();
-            }
-        });
+        if(character.getImageURL_fullbody()!=null){
+            Picasso.get().load(character.getImageURL_fullbody()).into(imageViewCharacter, new Callback() {
+                @Override
+                public void onSuccess() {
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    dialog.dismiss();
+                }
+            });
+        }
+
         tableRowHeader.setBackgroundColor(getResources().getColor(R.color.purple_dark));
 
         List<TableRowAttack> rows = new ArrayList<>();
