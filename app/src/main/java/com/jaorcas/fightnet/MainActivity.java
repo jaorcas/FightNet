@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewRegister;
     TextInputEditText textInputEmail;
     TextInputEditText textInputPassword;
+    TextView textViewContraseña;
     Button button;
 
     AuthProvider authProvider;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         textInputPassword = findViewById(R.id.textInputPassword);
         button = findViewById(R.id.buttonLogin);
         buttonGoogle = findViewById(R.id.buttonGoogle);
+        textViewContraseña = findViewById(R.id.textViewContraseña);
 
         //PROVIDERS
         authProvider = new AuthProvider();
@@ -112,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //BOTÓN DE OLVIDAR CONTRASEÑA
+        textViewContraseña.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ResetPasswordActivity.class);
                 startActivity(intent);
             }
         });

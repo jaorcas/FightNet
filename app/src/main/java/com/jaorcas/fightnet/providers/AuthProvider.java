@@ -1,13 +1,13 @@
 package com.jaorcas.fightnet.providers;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 public class AuthProvider {
 
@@ -58,6 +58,30 @@ public class AuthProvider {
         if(auth!=null){
             auth.signOut();
         }
+    }
+
+    public Task<Void> sendPasswordResetEmail(String email){
+        if(auth!=null){
+            return auth.sendPasswordResetEmail(email);
+        }else {
+            return null;
+        }
+    }
+
+    public void checkEmailExists(String email, EmailExistsCallback callback) {
+        auth.fetchSignInMethodsForEmail(email).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<String> signInMethods = task.getResult().getSignInMethods();
+                        boolean exists = signInMethods != null && !signInMethods.isEmpty();
+                        callback.onEmailExists(exists);
+                    } else {
+                        callback.onEmailExists(false);
+                    }
+                });
+    }
+
+    public interface EmailExistsCallback {
+        void onEmailExists(boolean exists);
     }
 
 

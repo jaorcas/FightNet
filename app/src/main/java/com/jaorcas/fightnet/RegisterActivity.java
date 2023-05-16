@@ -150,7 +150,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
 
-                                Toast.makeText(RegisterActivity.this, "El usuario se ha añadido a la base de datos", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "El usuario se ha creado con exito", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Toast.makeText(RegisterActivity.this, "El usuario no se ha añadido a la base de datos", Toast.LENGTH_SHORT).show();
