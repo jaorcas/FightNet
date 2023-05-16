@@ -114,6 +114,15 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout> -->
 
+        <TextView
+            android:id="@+id/textViewContraseña"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="¿Has olvidado la contraseña?"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <!-- Botón Inicio sesion -->
         <androidx.appcompat.widget.AppCompatButton
@@ -148,7 +157,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginHorizontal="40dp"/>  -->
 
+
+
         </LinearLayout>
+
 
     <!-- Textos inferiores -->
     <LinearLayout
